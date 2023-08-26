@@ -1,9 +1,9 @@
 const { HttpError } = require("../helpers");
 
-const validateBody = (scheme) => {
+const validateFavoriteField = (scheme) => {
   const func = (req, res, next) => {
     if (Object.keys(req.body).length === 0) {
-      next(HttpError(400, "missing fields"));
+      next(HttpError(400, "missing field favorite"));
     } else {
       const { error } = scheme.validate(req.body);
       if (error) {
@@ -16,4 +16,4 @@ const validateBody = (scheme) => {
   return func;
 };
 
-module.exports = validateBody;
+module.exports = validateFavoriteField;
